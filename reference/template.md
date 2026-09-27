@@ -1,28 +1,28 @@
-# ヘルプガイド テンプレート
-最小限の構成。
-スクリーンショットの位置には、代わりにアスキー図で画面イメージを置く。
+# Help guide template
+The minimal structure.
+Where a screenshot would go, place an ASCII diagram of the screen instead.
 
 ---
 
-# {機能名}
-{リード文: 読者が「自分に関係あるか」を数秒で判定できるように、この機能で何ができるのか、いつ・何のために使い、何が得られるのか（目的・アウトカム）を2〜3文で。機能の自己紹介や効能書きで始めない}
+# {Feature name}
+{Lead: in 2–3 sentences, say what the reader can do with this feature, when and for what they use it, and what they get (purpose and outcome), so they can judge in seconds whether it concerns them. Don't open with a self-introduction of the feature or a list of benefits}
 
-## 前提条件（optional）
-{必要な権限・設定など}
+## Prerequisites (optional)
+{Required permissions, settings, etc.}
 
-## 操作
+## Operations
 
-### {操作名}
+### {Operation name}
 
-1. {手順。制約・仕様・ルールはそれに出会う手順に添える。少しでも込み入ったルールは表で。
-用語に属する塊は後方の「{用語}とは」に置き、手順からはリンクで参照する}
+1. {Step. Attach constraints, specs, and rules to the step where the reader meets them. Put anything even slightly intricate in a table.
+Chunks that belong to a term go in the later "What is {term}" section; link to them from the step}
 
-## {用語}とは（optional）
-{用語と、その用語に属するルール・制約はひと塊として扱う。
-操作ではなく用語（対象・モード・状態）に属する知識を、用語ごとに節を立ててここで説明する。
-複数の操作から参照されるのは典型例で、参照元は手順・エラーガイド・読者の疑問・他の記事のいずれでもよい。
-読者は手順からリンクで飛んでくる。塊ごとに、通読を前提とせず単独で読める形（表・短い節）で書く。
-用語の知識でも、1つの手順の中でしか使わない塊は、その手順に添える}
+## What is {term} (optional)
+{Treat a term and the rules and constraints that belong to it as one chunk.
+Explain here, with a section per term, knowledge that belongs to a term (an object, mode, or state) rather than to an operation.
+Being referenced from several operations is typical; the referrer can be a step, the error guide, a reader's question, or another article.
+Readers arrive via links from steps. Write each chunk so it reads on its own without reading straight through (tables, short sections).
+Even term knowledge, if used only within one step, goes with that step}
 
-## エラーガイド
-{メッセージの文言そのものも仕様の一部}
+## Error guide
+{The exact wording of each message is part of the spec}

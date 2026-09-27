@@ -1,56 +1,61 @@
-# ヘルプガイドのルーブリック
+# Help guide rubric
 
-読者は困っていて、不安で、読まずにスキャンしている。マニュアルは事前に読まれず、
-詰まったときに開かれる。成功の定義: 読者が自己解決し、チケットが生まれない。
-次善: サポート担当者がこの記事だけで一往復で問い合わせを閉じられる。
+The reader is stuck, anxious, and scanning rather than reading. Manuals are not read in
+advance; they are opened when someone gets stuck. Definition of success: the reader solves
+it themselves and no ticket is created.
+Next best: a support agent can close the inquiry in one round trip using only this article.
 
-記事は挙動の全量である: 機能のルール・振る舞いはすべて記事から導け、書かれていない
-ことは「できない・起きない」を意味する。
+The article is the full extent of the behavior: every rule and behavior of the feature can be
+derived from the article, and anything not written means "cannot be done / does not happen".
 
-タスクに該当しない観点は適用外でよい。ただし「該当するのに書いていない」は欠落。
+Criteria that don't apply to the task may be skipped. But "applies and isn't written" is an omission.
 
-## 重大な欠陥(ひとつでもあれば、他が良くても不合格)
+## Critical defects (any one of these fails the article, however good the rest is)
 
-- 取り消せない・データが消える・課金される・他者に公開/通知される級の帰結が、
-  該当操作より前に書かれていない
-- 記事の記載だけでは主要タスクを完了できない(手順の飛び、未説明の判断)
+- A consequence on the level of irreversible, data loss, billing, or publishing to / notifying
+  others is not stated before the operation that causes it
+- The main task cannot be completed from the article alone (skipped steps, unexplained decisions)
 
-## 観点
+## Criteria
 
-1. 導入が読者の状況に答える。タイトルとリード文から「自分に関係あるか」「いつ・
-   何のために使い、何が得られるか」を数秒で判定でき、必要な権限や前提設定などの
-   適用範囲が冒頭で分かる。機能の自己紹介や効能書きで始めない。
+1. The introduction answers the reader's situation. From the title and lead, the reader can
+   judge in seconds "does this concern me?" and "when and for what do I use it, and what do I
+   get?", and the scope (required permissions, prerequisite settings, etc.) is clear up front.
+   It does not open with a self-introduction of the feature or a list of benefits.
 
-2. 挙動が予言の形で書かれている。「この条件で、こうすると、これが起きる」の対応で
-   書かれ、結果は観測できる形(画面の変化・通知・出力物)で、制約・上限、処理や
-   反映にかかる時間は数値で示される(目安でも数値)。
-   テスト: この記事だけで「〜したらどうなりますか」に推測なしで答えられるか。
-   条件のない「自動的に」、結果のない「反映されます」、数値のない「多数」
-   「一定期間」は欠陥。
+2. Behavior is written as prediction. It is written as "under this condition, if you do this,
+   this happens", results are observable (screen changes, notifications, outputs), and
+   constraints, limits, and the time processing or propagation takes are given as numbers
+   (approximate numbers are fine).
+   Test: can "what happens if I ...?" be answered from this article alone without guessing?
+   "Automatically" without a condition, "will be reflected" without a result, and "many" or
+   "a certain period" without a number are defects.
 
-3. 帰結の後出しがない。共通の前提(権限・設定・下準備)は手順より前に、個々の操作の
-   帰結(取り消せるか・誰に見えるか/通知されるか・既存データへの影響)はその操作より
-   前に書かれている。帰結が重大なほど早く、目立つ位置に。強調の数と強度は帰結の
-   重大さに比例しており、補足で済む内容が警告の体裁をとって本当の警告を埋もれ
-   させていない。
+3. No late reveal of consequences. Common prerequisites (permissions, settings, preparation)
+   come before the procedure, and the consequences of each operation (whether it can be undone,
+   who can see it / gets notified, impact on existing data) come before that operation. The more
+   serious the consequence, the earlier and more prominent. The number and strength of emphasis
+   is proportional to the severity of the consequence, and content that is merely supplementary
+   does not take the form of a warning and bury the real warnings.
 
-4. 手順が目的単位で、完了を確認できる。各ステップは1つの目的に対応し、途中に
-   未説明の判断を挟まない。分岐は分岐条件を手前に。用語は画面表記と一致し、
-   1概念1名称。手順の最後に、成功を何で確認できるかが書かれている。
+4. Steps map to goals and completion is verifiable. Each step corresponds to one goal, with no
+   unexplained decisions in between. The branching condition comes before the branch. Terms match
+   the screen labels, one name per concept. The end of the procedure says how to confirm success.
 
-5. 選択肢には選び方がある。モードや複数のやり方が登場するなら、手順だけでなく
-   「どんな状況でどちらを選ぶか、選ぶと何が変わるか」が書かれている。
+5. Choices come with how to choose. When modes or multiple ways appear, not only the procedure
+   but "in what situation to choose which, and what changes when you choose it" is written.
 
-6. つまずきに出口がある。この機能で自然に起こる失敗(権限がない・入力が不正・
-   上限超過・途中で失敗)に、症状から引ける手がかり(表示される文言)、原因、
-   復帰手順があり、途中で失敗しうる操作はどこまで反映されたか・再実行すると
-   どうなるかが分かり、自己解決できないときの次の行動まで示されている。
+6. Stumbles have exits. Failures that naturally occur with this feature (no permission, invalid
+   input, limit exceeded, failure midway) have clues findable from the symptom (the displayed
+   wording), the cause, and recovery steps. For operations that can fail midway, it is clear how
+   much was applied and what happens on retry, and the next action when self-resolution is
+   impossible is shown.
 
-7. 過不足がない。すべての記述が読者のタスク解決に寄与し、宣伝・水増しがない。
-   読者が自然に抱く次の疑問(編集できるか・消せるか・やり直せるか)には、答えるか
-   「できない」と明記するか、扱う記事への参照がある。込み入った条件は、ただし書きの
-   連鎖ではなく表などの構造で示す。
+7. Nothing missing, nothing extra. Every statement contributes to solving the reader's task,
+   with no promotion or padding. The reader's natural next questions (can I edit it, delete it,
+   redo it?) are answered, stated as "cannot", or referred to the article that covers them.
+   Intricate conditions are shown with structure such as tables, not chains of provisos.
 
-8. 詳細が畳まれている。誰もが通る主線だけが露出し、必要な人だけが降りる詳細は
-   トグルに畳まれ、summaryだけで中身を予測できる。開かないと気づけない
-   重大な帰結があれば欠陥。
+8. Details are folded. Only the main path everyone takes is exposed; details that only some
+   readers need are folded into toggles, and their contents are predictable from the summary
+   alone. A serious consequence that can only be noticed by opening a toggle is a defect.

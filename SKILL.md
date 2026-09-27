@@ -1,68 +1,69 @@
 ---
 name: help-guide-driven-dev
-description: ヘルプガイド（サポートサイト掲載のユーザーマニュアル）形式に仕様を落とし込む。新機能やエンハンスの仕様を詰めるとき、仕様書の代わりに使う。既存ヘルプガイドの更新にも使う
+description: Turn a spec into a help guide (an end-user manual published on a support site). Use it instead of a spec document when refining the spec of a new feature or enhancement. Also use it to update an existing help guide.
 ---
 
-仕様を、読者（製品のエンドユーザー）の視点で読める公開品質のヘルプガイドの形に書き下ろす。
-それをもとに開発を進め（ヘルプガイド駆動）、また、実際に読者へ公開するヘルプガイドの作成も兼ねる。
-システムの振る舞いは全て、読者にわかりやすく説明可能な形で記述されていなければならない。
-説明可能性が設計品質のリトマス試験になる（ガイドはUXのコストモデルである）。仕様負債・体験負債・命名負債の混入を防ぐことも目的。
+Write the spec as a publish-quality help guide that reads from the reader's (the product's end user's) point of view.
+Development proceeds from that guide (help-guide-driven), and the same guide doubles as the one actually published to readers.
+Every behavior of the system must be described in a way the reader can easily understand.
+Explainability is the litmus test of design quality (the guide is the cost model of the UX). The goal also includes keeping spec debt, experience debt, and naming debt out.
 
-## この仕事の In -> Out
+## In -> Out of this job
 - Input:
-  - 開発者（このスキルの依頼者）の要求・指示・語り。指定があれば仕様書やメモへの参照
-- 副入力（参照する状態）:
-  - 既存コード
-  - 今回要求が波及する既存のヘルプガイド（特にエンハンス開発のとき。ガイドの diff は破壊的変更の検出器である）
+  - The requests, instructions, and narrative of the developer (whoever invokes this skill). References to specs or notes, if given
+- Secondary input (state to consult):
+  - Existing code
+  - Existing help guides affected by this request (especially for enhancements; the guide's diff is a detector of breaking changes)
 - Output:
-  - `./reference/template.md`の構成をベースに、そのまま公開可能なヘルプガイドを、自己完結の1枚のHTMLファイルとして Write する（保存先の指定がなければ `<機能名>.html`）
-  - 応答本文: HTMLファイルのパスと、末尾に `## 判断ログ`（ガイド本体には含めない）: 質問せず自己判断で確定した仕様上の決定を「論点 / 決定 / 聞かずに決めた理由」各1行で列挙（メモにない上限値・目安時間を自ら置いた場合を含む）。軽微な文言・体裁の判断は対象外。
-- 作業中の提案（AskUserQuestionで開発者と対話）:
-  - 仕様上の詰めるべき点・曖昧な点を自己判断できないとき
-  - 説明可能性の担保が難しいときの仕様シンプル化提案（仕様負債・体験負債・命名負債のシグナル）
-    - 仕様はシンプルなほどよい。読者にとっての価値に繋がらない無駄に込み入った仕様は削減対象
+  - Write a ready-to-publish help guide, based on the structure of `./reference/template.md`, as a single self-contained HTML file (`<feature-name>.html` unless a location is specified)
+  - Write the guide in the language the developer uses, unless told otherwise
+  - Response body: the path of the HTML file, and at the end a `## Decision log` (not included in the guide itself): list spec decisions you settled on your own without asking, one line each as "Issue / Decision / Why decided without asking" (including limits or time estimates you set that were not in the notes). Minor wording and formatting choices are out of scope.
+- Proposals during the work (talk with the developer via AskUserQuestion):
+  - When there are open or ambiguous spec points you cannot decide on your own
+  - Spec-simplification proposals when explainability is hard to secure (a signal of spec debt, experience debt, or naming debt)
+    - The simpler the spec, the better. Needlessly intricate specs that do not lead to value for the reader are targets for reduction
 
 ## Best Practices
-- 考え方
-  - 「読者はこの機能をどう誤解するか」を考える
-  - 解釈の余地を最小にする
-  - 網羅するのは挙動、削るのは言葉。書くことは引き算で考える。長くないことがもっとも認知負荷を軽減する
-- 情報設計
-  - タスク指向で構成する
-  - 逆ピラミッド構成にする
-  - 情報は等価ではない。誰もが通る主線だけを露出し、必要な人だけが降りる詳細はトグルで畳む
-- 認知負荷を最小に
-  - 表を使う
-  - 番号付きリストや箇条書きを活用
-  - Note / Warning / Tip の使い分けと乱用禁止
-  - 具体例・サンプル値を入れる
-    - 抽象的な説明には典型例を添える
-    - 誤解されやすい場合は反例も示す
-- 文章表現
-  - 読者の語彙で書く（読者に観測可能な状態しか登場させない）
-  - UIラベルと表記を完全一致させる
-- 仕様の書き方
-  - 全ての振る舞いを書く（ガイドは読者との契約書）
-  - エッジケースの挙動を書く
-  - 非機能要件は読者の疑問に翻訳すれば挙動として書ける。操作ごとに自問し、記事だけで答えられるか確認する:
-    「何件・何MBまで？どれくらい待つ？（目安でも数値で）」「途中で失敗したら、どこまで反映されている？」「もう一度やったら二重になる？」「いつ・どこに反映される？」「他の人と同時に操作したら？」
-    未決はシンプルな側（全か無か・上書き・即時反映）に倒して判断ログへ。仕様が大きく割れるときだけ質問に載せる
-  - 内部目標（p95・可用性率など）はガイドに書かない。読者の契約（上限・待ち時間の目安）に翻訳できたものだけを書く
-- 「〜の場合」と書きたくなったら、どこに書くかを先に決める
+- Mindset
+  - Ask "how will the reader misunderstand this feature?"
+  - Minimize room for interpretation
+  - Cover every behavior; cut words. Writing is subtraction. Not being long is what reduces cognitive load the most
+- Information design
+  - Organize by task
+  - Use an inverted pyramid
+  - Information is not equal. Expose only the main path everyone takes; fold details that only some readers need into toggles
+- Minimize cognitive load
+  - Use tables
+  - Make use of numbered and bulleted lists
+  - Distinguish Note / Warning / Tip, and don't overuse them
+  - Include concrete examples and sample values
+    - Pair abstract explanations with a typical example
+    - Show a counterexample when misunderstanding is likely
+- Wording
+  - Write in the reader's vocabulary (mention only states the reader can observe)
+  - Match UI labels and notation exactly
+- Writing the spec
+  - Write every behavior (the guide is a contract with the reader)
+  - Write edge-case behavior
+  - Non-functional requirements can be written as behavior by translating them into the reader's questions. For each operation, ask yourself these and check the article alone answers them:
+    "Up to how many items / how many MB? How long will I wait? (a number, even if approximate)" "If it fails midway, how much has been applied?" "If I do it again, will it be duplicated?" "When and where will it show up?" "What if someone else operates on it at the same time?"
+    Settle open points on the simpler side (all-or-nothing, overwrite, immediate) and record them in the decision log. Raise them as questions only when the spec could split significantly
+  - Don't write internal targets (p95, availability rate, etc.) in the guide. Write only what can be translated into a contract with the reader (limits, approximate wait times)
+- When you feel like writing "if ...", decide where it goes first
 
-  | その場合分けは | 書く場所 |
+  | That branching is... | Where to write it |
   |---|---|
-  | 読者のやることは変わらない（起きることが違うだけ） | 手順は1本のまま。挙動の違いは仕様として表で添える |
-  | 操作を始める前から決まっている（権限・プラン） | 前提条件 |
-  | 目的が違う | 節・記事を分ける。手段の違いだけなら「次のいずれかを行います」+ 選び方 |
-  | 操作の途中で判明する（画面の変化・直前の結果） | その手順の中に条件文で。条件が先、動作が後。多ければ表 |
-  | 失敗したときの対処 | エラーガイド |
+  | The reader does the same thing (only what happens differs) | Keep one procedure. Add the behavioral differences as spec in a table |
+  | Determined before the operation starts (permissions, plan) | Prerequisites |
+  | A different goal | Split into sections or articles. If only the means differ, "Do one of the following" + how to choose |
+  | Discovered during the operation (a screen change, the previous result) | Inside that step as a conditional. Condition first, action after. Use a table if there are many |
+  | What to do on failure | Error guide |
 
-  どの行にも収まらない・入れ子になる場合分けは、仕様シンプル化提案のシグナル
+  Branching that fits no row, or that nests, is a signal for a spec-simplification proposal
 
 ## Gotchas
-- 全てを書こうとするあまり冗長になる。網羅すべきは挙動であって、言葉の量ではない
+- Trying to write everything makes it verbose. What must be exhaustive is behavior, not the volume of words
 
 ## Verify
-- `./reference/rubric.md` の観点でレビューし、欠陥は修正してから出力する
-- 仕様そのものに起因する修正できない欠陥は、シンプル化提案（未提案の論点）か判断ログへの記録（提案済み・却下、または提案するほどでないもの）で処理する
+- Review against the criteria in `./reference/rubric.md`, and fix defects before output
+- Defects that cannot be fixed because they stem from the spec itself are handled either as a simplification proposal (issues not yet proposed) or as an entry in the decision log (already proposed and rejected, or not worth proposing)
