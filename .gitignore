@@ -1,4 +1,4 @@
-# 公開対象は SKILL.md / reference/ / README.md / LICENSE のみ
+# Published files: SKILL.md, reference/, README.md, LICENSE only
 node_modules/
 eval/
 promptfooconfig*.yaml
