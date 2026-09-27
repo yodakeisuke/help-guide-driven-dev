@@ -1,18 +1,20 @@
-ヘルプガイド（サポートサイトに掲載するユーザーマニュアル）の形で、理解可能かつ具体的に仕様を表現する。
-それをもとに、人間が仕様を確認し、AIが実装する。
+An agent skill that expresses specs as a help guide (an end-user manual published on a support site): understandable and concrete.
+Humans review the spec in that form, and AI implements from it.
 
-## なぜ
-- 読者にわかりやすく説明可能な仕様か？（できなかったらおよそ仕様負債・体験負債・命名負債の作り込みである）のストレステストを兼ねる
-- 無駄に込み入った変な仕様/暗黙的な仕様をAIが勝手に実装することの抑止
-- 「仕様書を生成して」と指示するより、読む気になる文章が出てくる（AI slopの抑止）
-- AIが、実装都合の細部の話をしだすことを防ぐ（仕様のレベルに留まらせる）
-- そのままサポートサイト文章に転用可能、社内の非エンジニアにも読みやすい
+## Why
+- It doubles as a stress test: can the spec be explained clearly to readers? (If not, you are most likely building in spec debt, experience debt, or naming debt.)
+- It keeps AI from implementing needlessly intricate, odd, or implicit behavior on its own.
+- Asking for a help guide yields text people actually want to read, unlike "generate a spec" (it suppresses AI slop).
+- It keeps AI from drifting into implementation details (it stays at the level of the spec).
+- The output can be reused as-is for your support site, and is easy to read for non-engineers in your company.
 
-本来、マニュアルに記載のない暗黙的な振る舞いは存在してはいけないので、仕様書との記載粒度も変わらない。
-「仕様書」は不要。
+Behavior that is not documented in the manual should not exist in the first place, so the level of detail is no different from a spec.
+A separate "spec document" is unnecessary.
 
-## インストール
+## Install
 
 ```bash
 npx skills add yodakeisuke/help-guide-driven-dev
 ```
+
+The generated guide is written in the language you use when talking to the agent.
