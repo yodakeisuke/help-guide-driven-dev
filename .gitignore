@@ -1,0 +1,11 @@
+# 公開対象は SKILL.md / reference/ / README.md / LICENSE のみ
+node_modules/
+eval/
+promptfooconfig*.yaml
+package.json
+package-lock.json
+feedback.md
+CLAUDE.md
+.claude/
+script/
+.DS_Store
