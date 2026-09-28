@@ -33,8 +33,7 @@ Explainability is the litmus test of design quality (the guide is the cost model
   - Use an inverted pyramid
   - Information is not equal. Expose only the main path everyone takes; fold details that only some readers need into toggles
 - Minimize cognitive load
-  - Use tables
-  - Make use of numbered and bulleted lists
+  - Find the shape the information already has (layout, correspondence, flow, order, etc.), and choose, case by case, a presentation that makes that shape visible. Examples: for places on the screen, number them on a figure; for items × conditions, use a ✓ matrix. A table cell or list item that needs several sentences is a sign the presentation doesn't fit the shape
   - Distinguish Note / Warning / Tip, and don't overuse them
   - Include concrete examples and sample values
     - Pair abstract explanations with a typical example
@@ -62,7 +61,7 @@ Explainability is the litmus test of design quality (the guide is the cost model
   Branching that fits no row, or that nests, is a signal for a spec-simplification proposal
 
 ## Gotchas
-- Trying to write everything makes it verbose. What must be exhaustive is behavior, not the volume of words
+- What must be exhaustive is behavior, not the volume of words. Trying to write everything makes the guide verbose; yet when cutting words, it's easy to cut a behavior too (e.g., a condition gets narrower, or the result of an operation is no longer stated). Cut phrasing and duplication, never behavior
 
 ## Verify
 - Review against the criteria in `./reference/rubric.md`, and fix defects before output

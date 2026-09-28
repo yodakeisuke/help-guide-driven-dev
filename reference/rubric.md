@@ -54,7 +54,9 @@ Criteria that don't apply to the task may be skipped. But "applies and isn't wri
 7. Nothing missing, nothing extra. Every statement contributes to solving the reader's task,
    with no promotion or padding. The reader's natural next questions (can I edit it, delete it,
    redo it?) are answered, stated as "cannot", or referred to the article that covers them.
-   Intricate conditions are shown with structure such as tables, not chains of provisos.
+   Intricate information is shown in a presentation that fits its shape (not only tables). It fails
+   if the reader has to assemble a layout, correspondence, or flow in their head from prose, or if a
+   table cell or list item needs several sentences.
 
 8. Details are folded. Only the main path everyone takes is exposed; details that only some
    readers need are folded into toggles, and their contents are predictable from the summary
